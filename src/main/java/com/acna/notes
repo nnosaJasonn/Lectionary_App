@@ -1,0 +1,15 @@
+sample get request:
+
+$.get('https://cors-anywhere.herokuapp.com/http://bible.oremus.org/?Mark+1.1-11', function(data){
+
+        let str = data;
+        str = str.substring(str.indexOf('<div class="bibletext">'));
+        str = str.substring(0, str.indexOf('</div>'));
+        str = str.replace('<a', '<!--<a');
+        str = str.replace('</a>', '</a>-->');
+        console.log(str);
+
+        $('#bible').html(str);
+        $('#bible a').html('');
+    });
+</script>
