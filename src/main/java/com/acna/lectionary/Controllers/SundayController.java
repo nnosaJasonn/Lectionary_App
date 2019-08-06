@@ -41,4 +41,9 @@ public class SundayController {
         return readingDao.findAll();
     }
 
+    @GetMapping("/sunday")
+    public String thisSunday(){
+        return "readings/sunday";
+    }
+
 }
