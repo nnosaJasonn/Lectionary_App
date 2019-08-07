@@ -36,6 +36,12 @@ public class SundayController {
     Iterable<Proper> viewPropers(){
         return properDao.findAll();
     }
+    @GetMapping("/reading.json")
+    public @ResponseBody
+    Iterable<Reading> viewReadings(){
+        return readingDao.findAll();
+    }
+
     @GetMapping("/{id}/reading.json")
     public @ResponseBody
     Reading viewReadings(@PathVariable Long id){
