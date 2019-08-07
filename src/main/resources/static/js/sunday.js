@@ -1,43 +1,48 @@
-$.get('/reading.json', function(data){
 
-    console.log(data);
-    data.forEach(function(datum){
-        render(datum.epistle);
-    })
 
-    // let str = data;
-    // str = str.substring(str.indexOf('<div class="bibletext">'));
-    // str = str.substring(0, str.indexOf('</div>'));
-    // str = str.replace('<a', '<!--<a');
-    // str = str.replace('</a>', '</a>-->');
-    // console.log(str);
-    //
-    // $('#bible').html(str);
-    // $('#bible a').html('');
-});
+function path(str){
+    let path = str.split('/');
+    for (let i = 0; i<path.length; i++){
+        if(!isNaN(parseInt(path[i]))){
+            readings(path[i]);
+        }
+    }
+}
 
-function render(str) {
-    $.get(`https://cors-anywhere.herokuapp.com/http://bible.oremus.org/?${str}`, function(data){
-        console.log(data);
-        let string = data;
-        string = string.substring(string.indexOf('<div class="bibletext">'));
-        string = string.substring(0, string.indexOf('</div>'));
-        string = string.replace('<a', '<!--<a');
-        string = string.replace('</a>', '</a>-->');
-        console.log(string);
-        $('#epistle').html(string);
-        return str;
+path(window.location.pathname);
+function readings(str) {
+    $.get('/' + str + '/reading.json', function (datum) {
 
+        console.log(datum);
+
+        render(datum.epistle, 'epistle');
+
+        render(datum.psalm, 'psalm');
+
+        render(datum.oldT, 'OT');
+
+        render(datum.newT, 'gospel');
     });
 }
 
 
-function cardify(input) {
-    let str = input;
-    str = str.substring(str.indexOf('<div class="bibletext">'));
-    str = str.substring(0, str.indexOf('</div>'));
-    str = str.replace('<a', '<!--<a');
-    str = str.replace('</a>', '</a>-->');
-    return str;
 
-}
+    function render(str, part) {
+        var url = `https://cors-anywhere.herokuapp.com/http://www.esvapi.org/v2/rest/passageQuery?key=TEST&passage=${str}&include-headings=false&include-footnotes=false&include-audio-link=false&include-short-copyright=false&output-format=html`;
+        $.get({
+            url: url,
+            headers: {'Authorization': 'Token 9b5ec76d2e68608aa79915a8076ee298575f0e3c'},
+            success: function (data) {
+                console.log(data);
+                // str = data.replace('=', '');
+                // str = str.replace('_', '');
+                // let html = '<p>' + str + '</p>';
+                // console.log(str);
+                return $('#' + part).html(data);
+            }
+        });
+
+    }
+
+
+

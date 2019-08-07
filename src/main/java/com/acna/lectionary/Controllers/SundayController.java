@@ -8,6 +8,7 @@ import com.acna.lectionary.Repositories.ReadingRepository;
 import com.acna.lectionary.Repositories.YearRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -35,14 +36,14 @@ public class SundayController {
     Iterable<Proper> viewPropers(){
         return properDao.findAll();
     }
-    @GetMapping("/reading.json")
+    @GetMapping("/{id}/reading.json")
     public @ResponseBody
-    Iterable<Reading> viewReadings(){
-        return readingDao.findAll();
+    Reading viewReadings(@PathVariable Long id){
+        return readingDao.findOne(id);
     }
 
-    @GetMapping("/sunday")
-    public String thisSunday(){
+    @GetMapping("/sunday/{id}")
+    public String thisSunday(@PathVariable Long id){
         return "readings/sunday";
     }
 
