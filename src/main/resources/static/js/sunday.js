@@ -28,7 +28,7 @@ function readings(str) {
 
 
     function render(str, part) {
-        var url = `https://cors-anywhere.herokuapp.com/http://www.esvapi.org/v2/rest/passageQuery?key=TEST&passage=${str}&include-headings=false&include-footnotes=false&include-audio-link=false&include-short-copyright=false&output-format=html`;
+        var url = `https://cors-anywhere.herokuapp.com/http://www.esvapi.org/v2/rest/passageQuery?key=TEST&passage=${str}&include-headings=false&include-footnotes=false&include-passage-references=false&include-audio-link=false&include-short-copyright=false&output-format=html`;
         $.get({
             url: url,
             headers: {'Authorization': 'Token 9b5ec76d2e68608aa79915a8076ee298575f0e3c'},
