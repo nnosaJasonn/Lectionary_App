@@ -27,6 +27,17 @@ public class Proper {
     @ManyToOne
     private Season season;
 
+    @OneToOne
+    private FixedFeasts fixedFeast;
+
+    public FixedFeasts getFixedFeast() {
+        return fixedFeast;
+    }
+
+    public void setFixedFeast(FixedFeasts fixedFeast) {
+        this.fixedFeast = fixedFeast;
+    }
+
     public String getCollect() {
         return collect;
     }

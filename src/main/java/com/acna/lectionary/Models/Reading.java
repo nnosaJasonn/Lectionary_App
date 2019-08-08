@@ -29,6 +29,10 @@ public class Reading {
     @ManyToOne
     private Proper proper;
 
+
+
+
+
     public Long getId() {
         return id;
     }

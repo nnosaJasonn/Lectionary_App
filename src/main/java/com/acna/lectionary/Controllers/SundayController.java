@@ -48,6 +48,11 @@ public class SundayController {
         return readingDao.findOne(id);
     }
 
+    @GetMapping("year/{year}/reading.json")
+    public @ResponseBody Iterable<Reading> readingsByYear(@PathVariable Long year){
+        return readingDao.findAllByYear_Id(year);
+    }
+
     @GetMapping("/sunday/{id}")
     public String thisSunday(@PathVariable Long id){
         return "readings/sunday";
