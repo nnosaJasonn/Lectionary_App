@@ -50,7 +50,10 @@ INSERT INTO propers (collect, name, season_id)
         ('O God, the strength of all who put their trust in you: mercifully accept our prayers, and because through the weakness of our mortal nature we can do no good thing without you, grant us the help of your grace to keep your commandments; so that we may please you in will and deed; we ask this through Jesus Christ our Lord who lives and reigns with you and the Holy Spirit, one God, for ever and ever. Amen. ', 'The Seventh Sunday of Epiphany', 3),
         ('Lord God, you know that without your grace we cannot put our trust in anything that we do; defend us, by your mighty power, from all adversities which might assault and hurt our souls; we ask this through Jesus Christ our Lord; who with you and the Holy Spirit, lives and reigns as one God, now and forever. Amen. ', 'The Eighth Sunday of Epiphany', 3),
         ('Give us grace, O Lord, to answer readily the call of our Savior Jesus Christ and proclaim to all people the Good News of his salvation, that we and the whole world may perceive the glory of his marvelous works; who lives and reigns with you and the Holy Spirit, one God, for ever and ever. Amen. ', 'The Second to last Sunday of Epiphany [World Mission Sunday]', 3),
-        ('O God, who before the passion of your only-begotten Son revealed his glory upon the holy mountain: Grant that we, beholding by faith the light of his countenance, may be strengthened to bear our cross, and be changed into his likeness from glory to glory; through Jesus Christ our Lord; who lives and reigns with you and the Holy Spirit, one God, for ever and ever. Amen. ', 'The Last Sunday of Epiphany  [Transfiguration]', 3);
+        ('O God, who before the passion of your only-begotten Son revealed his glory upon the holy mountain: Grant that we, beholding by faith the light of his countenance, may be strengthened to bear our cross, and be changed into his likeness from glory to glory; through Jesus Christ our Lord; who lives and reigns with you and the Holy Spirit, one God, for ever and ever. Amen. ', 'The Last Sunday of Epiphany  [Transfiguration]', 3),
+#         Lent
+        ('Almighty and everlasting God, you hate nothing you have made and forgive the sins of all who are penitent: Create and make in us new and contrite hearts, that we, worthily lamenting our sins and acknowledging our wretchedness, may obtain of you, the God of all mercy, perfect remission and forgiveness; through Jesus Christ our Lord; who lives and reigns with you and the Holy Spirit, one God, for ever and ever. Amen. ', 'Ash Wednesday', 4),
+        ('Almighty God, whose blessed Son was led by the Spirit to be tempted by Satan: Come quickly to help us who are assaulted by many temptations; and, as you know the weaknesses of each of us, let each one find you mighty to save; through Jesus Christ your Son our Lord; who lives and reigns with you and the Holy Spirit, one God, now and forever. Amen. ', 'The First Sunday in Lent', 4);
 
 
 
@@ -149,3 +152,5 @@ VALUES ('rom+13.8-14', 'matt+24.29-44', 'isa+2.1-5', 'ps+122', 1, 1),
 
 # INSERT INTO fixed_feasts (date, reading_id)
 # VALUES ('')
+
+
