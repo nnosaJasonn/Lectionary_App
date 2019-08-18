@@ -17,7 +17,7 @@ VALUES ('Violet', 'Advent'),
        ('Red', 'PassionTide'),
        ('White', 'Easter'),
        ('Red', 'Pentecost'),
-       ('Green', 'After Trinity'),
+       ('Green', 'Ordinary'),
        ('Violet', 'Fast'),
        ('White', 'Feast');
 
