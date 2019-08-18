@@ -15,9 +15,11 @@ if (new Date() > new Date('12/25/2018')){
 
 //api for grabbing the day in the liturgical week
 
+//https://www.lectserve.com/?ref=public-apis maybe better
+
 
 function render() {
-    var url = `https://cors-anywhere.herokuapp.com/http://calapi.inadiutorium.cz/api/v0/en/calendars/general-en/today`;
+    var url = `https://cors-anywhere.herokuapp.com/https://www.lectserve.com/?ref=public-apis`;
     $.get({
         url: url,
         // headers: {'Authorization': 'Token 9b5ec76d2e68608aa79915a8076ee298575f0e3c'},
@@ -33,6 +35,10 @@ function render() {
     });
 
 }
+
+
+
+bender();
 
 render();
 
