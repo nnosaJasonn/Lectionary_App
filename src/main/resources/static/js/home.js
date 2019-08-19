@@ -1,15 +1,22 @@
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+function determineYear() {
 
-today = mm + '/' + dd + '/' + yyyy;
+    var today = new Date();
+    var yyyy = today.getFullYear();
+    var churchYear = yyyy % 3;
 
-if (new Date() > new Date('12/25/2018')){
-    console.log(true)
-} else{
-    console.log('didnt work');
+    switch(churchYear){
+        case 0:
+            return 3;
+        case 1:
+            return 1;
+        case 2:
+            return 2;
+    }
 }
+
+
+
+
 
 //http://calapi.inadiutorium.cz/api/v0/en/calendars/general-en/today
 
@@ -25,12 +32,11 @@ function render() {
         // headers: {'Authorization': 'Token 9b5ec76d2e68608aa79915a8076ee298575f0e3c'},
         success: function (data) {
             console.log(data);
-           let title = data.celebrations[0].title.split(' ');
-           let week = title[0];
-           let season = data.season;
-           console.log(week);
-            console.log(season);
-            showDay(week, season);
+          let info = data.substring(data.indexOf("<div class=\"flex-column right-column\">"));
+            let week = info.substring(info.indexOf("<h4>"), info.indexOf("</h4>"));
+          week = week.replace("<h4>", '');
+            console.log(week);
+            showDay(week);
         }
     });
 
@@ -38,12 +44,35 @@ function render() {
 
 
 
-bender();
+// bender();
 
 render();
 
-function showDay(week, season){
-    $.get('/' + season + '/' +week+ '/proper.json', function (data) {
+function showDay(week){
+    $.get('/' + week + '/proper.json', function (data) {
         console.log(data);
+       var year = determineYear();
+       thisWeeksReadings(data, year)
+    });
+}
+
+function thisWeeksReadings(proper, year){
+    $.get('/'+proper.id+'/'+year+'/readings.json', function(data){
+        console.log(data);
+
+        let html = `<div class="card" style="width: 75%;">
+  <div class="card-body">
+  <h4>Readings For This Coming Week</h4>
+    <h5 class="card-title"><a href="">${proper.name}</a></h5>
+    <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+    <p class="card-text"><ul>
+    <li>Psalm: ${data.psalm}</li>
+    <li>Old Testament: ${data.oldT}</li>
+    <li>New Testament: ${data.epistle}</li>
+    <li>Gospel: ${data.newT}</li>
+</ul></p>
+  </div>
+</div>`;
+        $('#collect').html(html);
     });
 }

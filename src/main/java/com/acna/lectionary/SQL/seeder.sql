@@ -150,6 +150,10 @@ VALUES ('rom+13.8-14', 'matt+24.29-44', 'isa+2.1-5', 'ps+122', 1, 1),
        ('Rom 10:9-17', 'Jn 20:19-31', 'Is 61:1-4', 'Ps 96', 20, 3),
        ('1 Cor 12:27-13:1','Lk 9:28-36','Ex 34:29-35', 'Ps 99', 21, 3);
 
+INSERT into readings (epistle, newt, oldt, psalm, proper_id, year_id)
+  VALUES('Heb 12:1-14', 'Lk 12:49-56', 'Jer 23:23-29', 'Ps 82', 65, 3);
+
+
 # INSERT INTO fixed_feasts (date, reading_id)
 # VALUES ('')
 
