@@ -15,16 +15,6 @@ function determineYear() {
 }
 
 
-
-
-
-//http://calapi.inadiutorium.cz/api/v0/en/calendars/general-en/today
-
-//api for grabbing the day in the liturgical week
-
-//https://www.lectserve.com/?ref=public-apis maybe better
-
-
 function render() {
     var url = `https://cors-anywhere.herokuapp.com/https://www.lectserve.com/?ref=public-apis`;
     $.get({
@@ -43,9 +33,6 @@ function render() {
 }
 
 
-
-// bender();
-
 render();
 
 function showDay(week){
@@ -59,17 +46,17 @@ function showDay(week){
 function thisWeeksReadings(proper, year){
     $.get('/'+proper.id+'/'+year+'/readings.json', function(data){
         console.log(data);
-
+        let href = "/sunday/" + data.id;
         let html = `<div class="card" style="width: 75%;">
   <div class="card-body">
   <h4>Readings For This Coming Week</h4>
-    <h5 class="card-title"><a href="">${proper.name}</a></h5>
+    <h5 class="card-title"><a href=${href}>${proper.name}</a></h5>
     <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
     <p class="card-text"><ul>
-    <li>Psalm: ${data.psalm}</li>
-    <li>Old Testament: ${data.oldT}</li>
-    <li>New Testament: ${data.epistle}</li>
-    <li>Gospel: ${data.newT}</li>
+    <li>Psalm: ${bibleNames(data.psalm)}</li>
+    <li>Old Testament: ${bibleNames(data.oldT)}</li>
+    <li>New Testament: ${bibleNames(data.epistle)}</li>
+    <li>Gospel: ${bibleNames(data.newT)}</li>
 </ul></p>
   </div>
 </div>`;
