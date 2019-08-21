@@ -36,7 +36,7 @@ function readings(str) {
             success: function (data) {
                 console.log(data);
                 let html = `<h4>${bibleNames(str)}</h4>`;
-                html += data;
+                html += `<p>${data.passages[0]}</p>`;
                 return $('#' + part).html(html);
             }
         });
