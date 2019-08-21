@@ -1,4 +1,4 @@
-function bibleNames(str){
+function bibleNames(str) {
     str = str.split(" ");
     if (!isNaN(parseInt(str[0]))) {
         str[1] = longify(str[1]);
@@ -9,8 +9,8 @@ function bibleNames(str){
     }
 }
 
-function longify(book){
-    switch(book.toLowerCase()){
+function longify(book) {
+    switch (book.toLowerCase()) {
 
         case "gen":
             return "Genesis";

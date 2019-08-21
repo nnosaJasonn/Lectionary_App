@@ -4,7 +4,7 @@ function determineYear() {
     var yyyy = today.getFullYear();
     var churchYear = yyyy % 3;
 
-    switch(churchYear){
+    switch (churchYear) {
         case 0:
             return 3;
         case 1:
@@ -22,9 +22,9 @@ function render() {
         // headers: {'Authorization': 'Token 9b5ec76d2e68608aa79915a8076ee298575f0e3c'},
         success: function (data) {
             console.log(data);
-          let info = data.substring(data.indexOf("<div class=\"flex-column right-column\">"));
+            let info = data.substring(data.indexOf("<div class=\"flex-column right-column\">"));
             let week = info.substring(info.indexOf("<h4>"), info.indexOf("</h4>"));
-          week = week.replace("<h4>", '');
+            week = week.replace("<h4>", '');
             console.log(week);
             showDay(week);
         }
@@ -35,16 +35,16 @@ function render() {
 
 render();
 
-function showDay(week){
+function showDay(week) {
     $.get('/' + week + '/proper.json', function (data) {
         console.log(data);
-       var year = determineYear();
-       thisWeeksReadings(data, year)
+        var year = determineYear();
+        thisWeeksReadings(data, year)
     });
 }
 
-function thisWeeksReadings(proper, year){
-    $.get('/'+proper.id+'/'+year+'/readings.json', function(data){
+function thisWeeksReadings(proper, year) {
+    $.get('/' + proper.id + '/' + year + '/readings.json', function (data) {
         console.log(data);
         let href = "/sunday/" + data.id;
         let html = `<div class="card" style="width: 75%;">

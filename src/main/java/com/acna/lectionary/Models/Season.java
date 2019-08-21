@@ -2,11 +2,12 @@ package com.acna.lectionary.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="seasons")
-public class Season {
+public class Season implements Serializable {
 
     @Id
     @GeneratedValue
