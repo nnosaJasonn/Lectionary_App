@@ -1,7 +1,5 @@
 function bibleNames(str){
-
     str = str.split(" ");
-    let book;
     if (!isNaN(parseInt(str[0]))) {
         str[1] = longify(str[1]);
         return str.join(" ");
@@ -9,8 +7,6 @@ function bibleNames(str){
         str[0] = longify(str[0]);
         return str.join(" ");
     }
-
-
 }
 
 function longify(book){

@@ -15,6 +15,7 @@ function readings(str) {
 
         console.log(datum);
 
+
         render(datum.epistle, 'epistle');
 
         render(datum.psalm, 'psalm');
@@ -28,17 +29,15 @@ function readings(str) {
 
 
     function render(str, part) {
-        var url = `https://cors-anywhere.herokuapp.com/http://www.esvapi.org/v2/rest/passageQuery?key=TEST&passage=${str}&include-headings=false&include-footnotes=false&include-passage-references=false&include-audio-link=false&include-short-copyright=false&output-format=html`;
+        var url = `https://cors-anywhere.herokuapp.com/https://api.esv.org/v3/passage/text/?q=${str}&include-headings=false&include-footnotes=false&include-passage-references=false&include-audio-link=false&include-short-copyright=false&output-format=plain-text`;
         $.get({
             url: url,
             headers: {'Authorization': 'Token 9b5ec76d2e68608aa79915a8076ee298575f0e3c'},
             success: function (data) {
                 console.log(data);
-                // str = data.replace('=', '');
-                // str = str.replace('_', '');
-                // let html = '<p>' + str + '</p>';
-                // console.log(str);
-                return $('#' + part).html(data);
+                let html = `<h4>${bibleNames(str)}</h4>`;
+                html += data;
+                return $('#' + part).html(html);
             }
         });
 
